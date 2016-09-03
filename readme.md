@@ -1,6 +1,9 @@
 ## Implementation of Pulsar packages
 
 Clone project
+```
+git clone https://github.com/syscover/pulsar53.local.git pulsar53.local
+```
 
 Execute on console to load all base files of Laravel Framework:
 ```
