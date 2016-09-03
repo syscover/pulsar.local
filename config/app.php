@@ -183,6 +183,7 @@ return [
          */
         App\Providers\PulsarServiceProvider::class,
         App\Providers\NavToolsServiceProvider::class,
+        App\Providers\CmsServiceProvider::class,
     ],
 
     /*
