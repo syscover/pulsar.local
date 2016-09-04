@@ -184,6 +184,8 @@ return [
         App\Providers\PulsarServiceProvider::class,
         App\Providers\NavToolsServiceProvider::class,
         App\Providers\CmsServiceProvider::class,
+        App\Providers\ComunikServiceProvider::class,
+        App\Providers\FacturaDirectaServiceProvider::class,
     ],
 
     /*
