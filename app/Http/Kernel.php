@@ -69,5 +69,8 @@ class Kernel extends HttpKernel
         'pulsar.locale'         => \Syscover\Pulsar\Middleware\Locale::class,
         'pulsar.permission'     => \Syscover\Pulsar\Middleware\Permission::class,
         'pulsar.https'          => \Syscover\Pulsar\Middleware\HttpsProtocol::class,
+        'pulsar.navTools'       => \Syscover\NavTools\Middleware\NavTools::class,
+        'pulsar.taxRule'        => \Syscover\Market\Middleware\TaxRule::class,
+        'pulsar.web.auth'       => \App\Http\Middleware\Authenticate::class,
     ];
 }

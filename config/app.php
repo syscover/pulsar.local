@@ -186,6 +186,9 @@ return [
         App\Providers\CmsServiceProvider::class,
         App\Providers\ComunikServiceProvider::class,
         App\Providers\FacturaDirectaServiceProvider::class,
+        App\Providers\CrmServiceProvider::class,
+        App\Providers\ShoppingCartServiceProvider::class,
+        App\Providers\MarketServiceProvider::class,
     ],
 
     /*
@@ -232,7 +235,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+        'Miscellaneous'	=> Syscover\Pulsar\Libraries\Miscellaneous::class,
+        'CartProvider'  => Syscover\ShoppingCart\Facades\CartProvider::class,
     ],
-
 ];

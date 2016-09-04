@@ -50,6 +50,11 @@ return [
             'driver'    => 'session',
             'provider'  => 'pulsarUser',
         ],
+
+        'crm' => [
+            'driver'    => 'session',
+            'provider'  => 'crmCustomer',
+        ],
     ],
 
     /*
@@ -74,6 +79,11 @@ return [
             'driver'    => 'eloquent',
             'model'     => Syscover\Pulsar\Models\User::class,
         ],
+
+        'crmCustomer' => [
+            'driver'    => 'eloquent',
+            'model'     => Syscover\Crm\Models\Customer::class,
+        ]
 
 //        'users' => [
 //            'driver' => 'eloquent',
@@ -114,6 +124,13 @@ return [
 
         'pulsarPasswordBroker' => [
             'provider'  => 'pulsarUser',
+            'email'     => 'pulsar::emails.password',
+            'table'     => '001_021_password_resets',
+            'expire'    => 60,
+        ],
+
+        'crmPasswordBroker' => [
+            'provider'  => 'crmCustomer',
             'email'     => 'pulsar::emails.password',
             'table'     => '001_021_password_resets',
             'expire'    => 60,
