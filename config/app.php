@@ -179,6 +179,11 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         /*
+         * Thirdparty Application Service Providers...
+         */
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+
+        /*
          * Pulsar Application Service Providers...
          */
         App\Providers\PulsarServiceProvider::class,
@@ -189,6 +194,9 @@ return [
         App\Providers\CrmServiceProvider::class,
         App\Providers\ShoppingCartServiceProvider::class,
         App\Providers\MarketServiceProvider::class,
+        App\Providers\FormsServiceProvider::class,
+        App\Providers\ProjectsServiceProvider::class,
+        App\Providers\OctopusServiceProvider::class,
     ],
 
     /*
