@@ -196,6 +196,10 @@ return [
         App\Providers\MarketServiceProvider::class,
         App\Providers\FormsServiceProvider::class,
         App\Providers\ProjectsServiceProvider::class,
+        App\Providers\BookingServiceProvider::class,
+        App\Providers\HotelsServiceProvider::class,
+        App\Providers\WineriesServiceProvider::class,
+        App\Providers\SpasServiceProvider::class,
         App\Providers\OctopusServiceProvider::class,
     ],
 

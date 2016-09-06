@@ -16,7 +16,8 @@
         "symfony/dom-crawler": "3.1.*",
         "sofa/eloquence": "5.3.*",
         "maatwebsite/excel": "~2.1.0",
-        "tecnickcom/tcpdf": "^6.2"
+        "tecnickcom/tcpdf": "^6.2",
+        "doctrine/dbal": "*"
     },
     "autoload": {
         "classmap": [
