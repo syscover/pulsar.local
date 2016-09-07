@@ -6,26 +6,21 @@ Route::group(['middleware' => ['pulsar.navTools']], function () {
     Route::get('/es',                                                                       ['as' => 'home-es',                     'uses' => '\App\Http\Controllers\WebFrontendController@home']);
     Route::get('/en',                                                                       ['as' => 'home-en',                     'uses' => '\App\Http\Controllers\WebFrontendController@home']);
 
-    // AUTH
-    // EN
-    Route::get('/en/account/login',                                                         ['as' => 'getLogin-en',                 'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);
-
-    // ES
-    Route::get('/es/cuenta/login',                                                          ['as' => 'getLogin-es',                 'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);
-    Route::post('/en/account/login/',                                                       ['as' => 'postLogin',                   'uses' => '\App\Http\Controllers\CustomerFrontendController@postLogin']);
 
     // CUSTOMER ACCOUNT
     // EN
+    Route::get('/en/account/login',                                                         ['as' => 'getLogin-en',                 'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);
     Route::get('/en/account/sing-in',                                                       ['as' => 'getSingIn-en',                'uses' => '\App\Http\Controllers\CustomerFrontendController@getSingIn']);
     Route::post('/en/account/sing-in',                                                      ['as' => 'postSingIn-en',               'uses' => '\App\Http\Controllers\CustomerFrontendController@postSingIn']);
     Route::put('/en/account/sing-in',                                                       ['as' => 'putSingIn-en',                'uses' => '\App\Http\Controllers\CustomerFrontendController@putSingIn']);
 
     // ES
+    Route::get('/es/cuenta/login',                                                          ['as' => 'getLogin-es',                 'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);
     Route::get('/es/cuenta/registro',                                                       ['as' => 'getSingIn-es',                'uses' => '\App\Http\Controllers\CustomerFrontendController@getSingIn']);
     Route::post('/es/cuenta/registro',                                                      ['as' => 'postSingIn-es',               'uses' => '\App\Http\Controllers\CustomerFrontendController@postSingIn']);
     Route::put('/es/cuenta/registro',                                                       ['as' => 'putSingIn-es',                'uses' => '\App\Http\Controllers\CustomerFrontendController@putSingIn']);
 
-
+    Route::post('/en/account/login/',                                                       ['as' => 'postLogin',                   'uses' => '\App\Http\Controllers\CustomerFrontendController@postLogin']);
 
 
     // SHOPPING CART
@@ -42,6 +37,7 @@ Route::group(['middleware' => ['pulsar.navTools']], function () {
     Route::match(['get', 'post'], '/es/carro/de/compra/borrar/producto/{rowId}',            ['as' => 'deleteShoppingCart-es',       'uses' => '\App\Http\Controllers\ShoppingCartController@deleteShoppingCart']);
     Route::put('/es/carro/de/comprar/actualizar',                                           ['as' => 'putShoppingCart-es',          'uses' => '\App\Http\Controllers\ShoppingCartController@putShoppingCart']);
     Route::post('/es/carro/de/comprar/comprueba/codigo/cupon',                              ['as' => 'checkCouponCode-es',          'uses' => '\App\Http\Controllers\ShoppingCartController@checkCouponCode']);
+
 
     // FACTURA DIRECTA
     // EN
@@ -76,6 +72,7 @@ Route::group(['middleware' => ['pulsar.navTools', 'pulsar.web.auth:crm']], funct
     Route::match(['get', 'post'], '/es/cuenta',                                             ['as' => 'account-es',                  'uses' => '\App\Http\Controllers\CustomerFrontendController@account']);
     Route::match(['get', 'post'], '/es/cuenta/logout',                                      ['as' => 'logout-es',                   'uses' => '\App\Http\Controllers\CustomerFrontendController@logout']);
 
+
     // CHECKOUT
     // EN
     Route::get('/en/checkout/shipping',                                                     ['as' => 'getCheckout01-en',            'uses' => '\App\Http\Controllers\MarketFrontendController@getCheckout01']);
@@ -95,7 +92,6 @@ Route::group(['middleware' => ['pulsar.navTools', 'pulsar.web.auth:crm']], funct
 });
 
 
-
 /* REDSYS */
 Route::get('/redsys/payment/response/successful',                                           ['as' => 'redsysPaymentResponseSuccessful',     'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponseSuccessful']);
 Route::get('/redsys/payment/response/failure',                                              ['as' => 'redsysPaymentResponseFailure',        'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponseFailure']);
@@ -106,7 +102,6 @@ Route::get('/search/engine',                                                    
 /* REDSYS */
 // This route is register in App\Http\Middleware\VerifyCsrfToken in $except array to avoid csrf
 Route::post('/redsys/payment/response',                                                     ['as' => 'redsysPaymentResponse',               'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponse']);
-
 
 /* PAYPAL */
 Route::post('/paypal/payment/response/successful',                                          ['as' => 'payPalPaymentResponseSuccessful',     'uses' => '\App\Http\Controllers\MarketFrontendController@payPalPaymentResponseSuccessful']);
