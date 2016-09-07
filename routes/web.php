@@ -94,18 +94,19 @@ Route::group(['middleware' => ['pulsar.navTools', 'pulsar.web.auth:crm']], funct
     Route::post('/es/realizar/pedido/pago',                                                 ['as' => 'postCheckout03-es',           'uses' => '\App\Http\Controllers\MarketFrontendController@postCheckout03']);
 });
 
-Route::group(['middleware' => ['noCsrWeb']], function() {
 
-    /* REDSYS */
-    Route::get('/redsys/payment/response/successful',                                       ['as' => 'redsysPaymentResponseSuccessful',     'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponseSuccessful']);
-    Route::get('/redsys/payment/response/failure',                                          ['as' => 'redsysPaymentResponseFailure',        'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponseFailure']);
 
-    /* GOOGLE SEARCH ENGINE */
-    Route::get('/search/engine',                                                            ['as' => 'searchEngine',                        function(){ return view('www.content.google_search_engine');}]);
+/* REDSYS */
+Route::get('/redsys/payment/response/successful',                                           ['as' => 'redsysPaymentResponseSuccessful',     'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponseSuccessful']);
+Route::get('/redsys/payment/response/failure',                                              ['as' => 'redsysPaymentResponseFailure',        'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponseFailure']);
 
-    /* REDSYS */
-    Route::post('/redsys/payment/response',                                                 ['as' => 'redsysPaymentResponse',               'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponse']);
-});
+/* GOOGLE SEARCH ENGINE */
+Route::get('/search/engine',                                                                ['as' => 'searchEngine',                        function(){ return view('www.content.google_search_engine');}]);
+
+/* REDSYS */
+// This route is register in App\Http\Middleware\VerifyCsrfToken in $except array to avoid csrf
+Route::post('/redsys/payment/response',                                                     ['as' => 'redsysPaymentResponse',               'uses' => '\App\Http\Controllers\MarketFrontendController@redsysPaymentResponse']);
+
 
 /* PAYPAL */
 Route::post('/paypal/payment/response/successful',                                          ['as' => 'payPalPaymentResponseSuccessful',     'uses' => '\App\Http\Controllers\MarketFrontendController@payPalPaymentResponseSuccessful']);
