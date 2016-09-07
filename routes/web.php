@@ -2,24 +2,31 @@
 
 Route::group(['middleware' => ['pulsar.navTools']], function () {
 
-    Route::get('/',                                                                         ['as'=>'home',                      'uses'	=> '\App\Http\Controllers\WebFrontendController@home']);
-    Route::get('/es',                                                                       ['as'=>'home-es',                   'uses'	=> '\App\Http\Controllers\WebFrontendController@home']);
-    Route::get('/en',                                                                       ['as'=>'home-en',                   'uses'	=> '\App\Http\Controllers\WebFrontendController@home']);
+    Route::get('/',                                                                         ['as'=>'home',                      'uses' => '\App\Http\Controllers\WebFrontendController@home']);
+    Route::get('/es',                                                                       ['as'=>'home-es',                   'uses' => '\App\Http\Controllers\WebFrontendController@home']);
+    Route::get('/en',                                                                       ['as'=>'home-en',                   'uses' => '\App\Http\Controllers\WebFrontendController@home']);
+
+    // AUTH
+    // EN
+    Route::get('/en/account/login',                                                         ['as'=>'getLogin-en',               'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);
+
+    // ES
+    Route::get('/es/cuenta/login',                                                          ['as'=>'getLogin-es',               'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);
+    Route::post('/en/account/login/',                                                       ['as' => 'postLogin',               'uses' => '\App\Http\Controllers\CustomerFrontendController@postLogin']);
 
     // CUSTOMER ACCOUNT
     // EN
-    Route::get('/en/account/login',                                                         ['as'=>'getLogin-en',               'uses'	=> '\App\Http\Controllers\CustomerFrontendController@getLogin']);
-    Route::get('/en/account/sing-in',                                                       ['as'=>'getSingIn-en',              'uses'	=> '\App\Http\Controllers\CustomerFrontendController@getSingIn']);
-    Route::post('/en/account/sing-in',                                                      ['as'=>'postSingIn-en',             'uses'	=> '\App\Http\Controllers\CustomerFrontendController@postSingIn']);
-    Route::put('/en/account/sing-in',                                                       ['as'=>'putSingIn-en',              'uses'	=> '\App\Http\Controllers\CustomerFrontendController@putSingIn']);
+    Route::get('/en/account/sing-in',                                                       ['as'=>'getSingIn-en',              'uses' => '\App\Http\Controllers\CustomerFrontendController@getSingIn']);
+    Route::post('/en/account/sing-in',                                                      ['as'=>'postSingIn-en',             'uses' => '\App\Http\Controllers\CustomerFrontendController@postSingIn']);
+    Route::put('/en/account/sing-in',                                                       ['as'=>'putSingIn-en',              'uses' => '\App\Http\Controllers\CustomerFrontendController@putSingIn']);
 
     // ES
-    Route::get('/es/cuenta/login',                                                          ['as'=>'getLogin-es',               'uses'	=> '\App\Http\Controllers\CustomerFrontendController@getLogin']);
-    Route::get('/es/cuenta/registro',                                                       ['as'=>'getSingIn-es',              'uses'	=> '\App\Http\Controllers\CustomerFrontendController@getSingIn']);
+    Route::get('/es/cuenta/registro',                                                       ['as'=>'getSingIn-es',              'uses' => '\App\Http\Controllers\CustomerFrontendController@getSingIn']);
     Route::post('/es/cuenta/registro',                                                      ['as'=>'postSingIn-es',             'uses'	=> '\App\Http\Controllers\CustomerFrontendController@postSingIn']);
     Route::put('/es/cuenta/registro',                                                       ['as'=>'putSingIn-es',              'uses'	=> '\App\Http\Controllers\CustomerFrontendController@putSingIn']);
 
-    Route::post('/en/account/login/',                                                       ['as' => 'postLogin',           'uses' => '\App\Http\Controllers\CustomerFrontendController@postLogin']);
+
+
 
     // SHOPPING CART
     // EN
