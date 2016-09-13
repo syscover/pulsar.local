@@ -90,7 +90,7 @@ $style = [
                                                 @if ($level == 'error')
                                                     Whoops!
                                                 @else
-                                                    {{ trans('pulsar::pulsar.hello') }}!
+                                                    Hello!
                                                 @endif
                                             @endif
                                         </h1>
@@ -140,7 +140,7 @@ $style = [
 
                                         <!-- Salutation -->
                                         <p style="{{ $style['paragraph'] }}">
-                                            {{ trans('pulsar::pulsar.regards') }},<br>{{ config('app.name') }}
+                                            Regards,<br>{{ config('app.name') }}
                                         </p>
 
                                         <!-- Sub Copy -->
@@ -149,7 +149,8 @@ $style = [
                                                 <tr>
                                                     <td style="{{ $fontFamily }}">
                                                         <p style="{{ $style['paragraph-sub'] }}">
-                                                            {{ trans('pulsar::pulsar.message_notification_01', ['action' => $actionText]) }}
+                                                            If you’re having trouble clicking the "{{ $actionText }}" button,
+                                                            copy and paste the URL below into your web browser:
                                                         </p>
 
                                                         <p style="{{ $style['paragraph-sub'] }}">
@@ -175,8 +176,8 @@ $style = [
                                     <td style="{{ $fontFamily }} {{ $style['email-footer_cell'] }}">
                                         <p style="{{ $style['paragraph-sub'] }}">
                                             &copy; {{ date('Y') }}
-                                            <a style="{{ $style['anchor'] }}" href="{{ url('/' . config('pulsar.name')) }}" target="_blank">{{ config('app.name') }}</a>.
-                                            {{ trans('pulsar::pulsar.all_rights_reserved') }}.
+                                            <a style="{{ $style['anchor'] }}" href="{{ url('/') }}" target="_blank">{{ config('app.name') }}</a>.
+                                            All rights reserved.
                                         </p>
                                     </td>
                                 </tr>
