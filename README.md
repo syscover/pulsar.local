@@ -57,7 +57,7 @@ php artisan vendor:publish --force
 Config your .env file with database connection and execute migrations:
 ```
 php artisan migrate
-php artisan db:seed --class="PulsarTableSeeder"
+php artisan migrate --path=database/migrations/updates
 ```
 
 Execute optimize
