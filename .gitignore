@@ -51,8 +51,6 @@
 /resources/lang/en/validation.php
 /resources/lang/es/validation.php
 
-/resources/views/vendor/*
-
 /storage/exports/
 
 composer.dev.lock
