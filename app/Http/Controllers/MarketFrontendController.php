@@ -414,6 +414,7 @@ class MarketFrontendController extends Controller
 
             // customer data
             'customer_id_116'                           => $customer->id_301,
+            'customer_group_id_116'                     => $customer->group_id_301,
             'customer_company_116'                      => $customer->company_301,
             'customer_tin_116'                          => $customer->tin_301,
             'customer_name_116'                         => $customer->name_301,
