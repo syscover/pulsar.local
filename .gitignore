@@ -34,6 +34,7 @@
 /config/hotels.php
 /config/spas.php
 /config/wineries.php
+/config/vinipad.php
 /config/booking.php
 /config/navTools.php
 /config/shoppingCart.php

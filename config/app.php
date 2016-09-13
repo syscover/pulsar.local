@@ -201,6 +201,7 @@ return [
         App\Providers\WineriesServiceProvider::class,
         App\Providers\SpasServiceProvider::class,
         App\Providers\OctopusServiceProvider::class,
+        App\Providers\VinipadServiceProvider::class,
     ],
 
     /*
