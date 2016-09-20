@@ -9,7 +9,6 @@ class WebFrontendController extends Controller
 {
     public function home()
     {
-        dd(user_lang());
         return view('www.content.home');
     }
 
