@@ -43,21 +43,21 @@ class CustomerFrontendController extends Controller
      *
      * @var string
      */
-    protected $redirectTo;
+    protected $redirectTo = 'account-';
 
     /**
      * Route to get login form
      *
      * @var string
      */
-    protected $loginPath;
+    protected $loginPath = 'getLogin';
 
     /**
      * Redirect route after logout
      *
      * @var string
      */
-    protected $logoutPath;
+    protected $logoutPath = 'home-';
 
     /**
      * Here you can customize your guard, this guar has to set in auth.php config
@@ -66,13 +66,6 @@ class CustomerFrontendController extends Controller
      */
     protected $guard;
 
-
-    public function __construct()
-    {
-        $this->redirectTo   = route('account-' . user_lang());
-        $this->loginPath    = route('getLogin-' . user_lang());
-        $this->logoutPath   = route('home-' . user_lang());
-    }
 
     /**
      * Show account view
@@ -103,7 +96,7 @@ class CustomerFrontendController extends Controller
      * Handle a login request to the application.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function postLogin(Request $request)
     {
@@ -134,9 +127,12 @@ class CustomerFrontendController extends Controller
                 }
                 else
                 {
-                    return redirect($this->loginPath)->withErrors([
-                        'message'   => 'User inactive'
-                    ])->withInput();
+                    return redirect()
+                        ->route($this->loginPath . user_lang())
+                        ->withErrors([
+                            'message'   => 'User inactive'
+                        ])
+                        ->withInput();
                 }
             }
 
@@ -208,7 +204,9 @@ class CustomerFrontendController extends Controller
             }
             else
             {
-                return redirect()->intended($this->redirectTo);
+                return redirect()
+                    ->intended()
+                    ->route($this->redirectTo . user_lang());
             }
         }
 
@@ -222,9 +220,12 @@ class CustomerFrontendController extends Controller
         }
         else
         {
-            return redirect($this->loginPath)->withErrors([
-                'message' => 'User or password incorrect'
-            ])->withInput();
+            return redirect()
+                ->route($this->loginPath . user_lang())
+                ->withErrors([
+                    'message' => 'User or password incorrect'
+                ])
+                ->withInput();
         }
     }
 
@@ -284,7 +285,8 @@ class CustomerFrontendController extends Controller
             }
         }
 
-        return redirect($this->logoutPath);
+        return redirect()
+            ->route($this->logoutPath . user_lang());
     }
 
     /**
