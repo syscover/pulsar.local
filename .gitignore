@@ -16,6 +16,7 @@
 /app/Providers/ProjectsServiceProvider.php
 /app/Providers/PulsarServiceProvider.php
 /app/Providers/FacturaDirectaServiceProvider.php
+/app/Providers/HotelManagerServiceProvider.php
 /app/Providers/VinipadServiceProvider.php
 
 
@@ -27,6 +28,7 @@
 /config/api.php
 /config/projects.php
 /config/facturaDirecta.php
+/config/hotelManager.php
 /config/cms.php
 /config/crm.php
 /config/comunik.php

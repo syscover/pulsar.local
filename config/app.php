@@ -191,6 +191,7 @@ return [
         App\Providers\CmsServiceProvider::class,
         App\Providers\ComunikServiceProvider::class,
         App\Providers\FacturaDirectaServiceProvider::class,
+        App\Providers\HotelManagerServiceProvider::class,
         App\Providers\CrmServiceProvider::class,
         App\Providers\ShoppingCartServiceProvider::class,
         App\Providers\MarketServiceProvider::class,

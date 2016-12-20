@@ -13,6 +13,8 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         //
-        'redsys/payment/response'
+        'redsys/payment/response',
+        'check/curl/parameters',
+        '/hotel/manager/check/availability'
     ];
 }

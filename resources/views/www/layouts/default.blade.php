@@ -61,6 +61,9 @@
                         <a href="{{ route('facturaDirectaClients-' . user_lang()) }}">FD</a>
                     </li>
                     <li>
+                        <a href="{{ route('hotelManager-' . user_lang()) }}">HM</a>
+                    </li>
+                    <li>
                         <a href="#">{{ trans('www.contact') }}</a>
                     </li>
                     <li>
