@@ -37,7 +37,15 @@ class HotelManagerController extends Controller
 
         $response = HotelManager::checkAvailability($params);
 
-        return response($response, 200)
-            ->header('Content-Type', 'application/json');
+        if($request->input('type') === 'json')
+        {
+            return response($response, 200)
+                ->header('Content-Type', 'application/json');
+        }
+        else
+        {
+            dd(json_decode($response));
+        }
+
     }
 }
