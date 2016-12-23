@@ -65,10 +65,6 @@
 
         <input type="hidden" name="action" value="list_disponibilidad">
 
-        <input type="hidden" name="test[]" value="1">
-        <input type="hidden" name="test[]" value="2">
-        <input type="hidden" name="test[]" value="3">
-
         <input type="hidden" name="rooms[numberRooms]" value="1">
         <input type="hidden" name="rooms[numberAdults]" value="1">
 
