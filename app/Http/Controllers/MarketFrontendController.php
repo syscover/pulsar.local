@@ -80,14 +80,11 @@ class MarketFrontendController extends Controller
         // get tax rules from all kind of product to calculate your tax
         // like this, with only one query, get data to calculate tax from all products
         $taxRules = TaxRule::builder()
-            ->where('country_id_103', config('market.taxCountry'))
-            ->where('customer_class_tax_id_106', config('market.taxCustomerClass'))
+            ->where('country_id_103', config('market.taxCountry')) // this parameter is instanced in middleware TaxRule
+            ->where('customer_class_tax_id_106', config('market.taxCustomerClass')) // this parameter is instanced in middleware TaxRule
             ->whereIn('product_class_tax_id_107', $productClasses->toArray())
             ->orderBy('priority_104', 'asc')
             ->get();
-
-
-
 
 
         // We add properties to products, including each category at your product
@@ -392,7 +389,7 @@ class MarketFrontendController extends Controller
         $orderAux = [
             'date_116'                                  => $orderDate,
             'date_text_116'				                => date(config('pulsar.datePattern') . ' H:i', $orderDate),
-            'status_id_116'                             => 1, // Outstanding
+            'status_id_116'                             => 1, // Pending
             'ip_116'                                    => $request->ip(),  // customer IP
             'payment_method_id_116'                     => $request->input('paymentMethod'),
             'comments_116'                              => null,
@@ -437,7 +434,7 @@ class MarketFrontendController extends Controller
             'invoiced_116'                              => false,   // check if has been created invoice on billing program
 
             // check if there are to do a delivery
-            'has_shipping_116'                  => CartProvider::instance()->hasItemTransportable()
+            'has_shipping_116'                          => CartProvider::instance()->hasItemTransportable()
         ];
 
         // if cart has shipping, set shipping in order

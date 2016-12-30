@@ -102,7 +102,7 @@ class ShoppingCartController extends Controller
 
         try
         {
-            // intance row to add product
+            // instance row to add product
             CartProvider::instance()->add(
                 new Item(
                     $product->id_111,
