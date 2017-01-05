@@ -17,25 +17,36 @@ class HotelManagerController extends Controller
 
     public function checkAvailability(Request $request)
     {
-        $params = [
-            'datos' => json_encode([
-                'lang'          => $request->input('lang'),
-                'hotelIds'      => explode(',',$request->input('hotelIds')), // You must pass a array with hotel IDs
-                'checkInDate'   => $request->input('checkInDate'),
-                'checkOutDate'  => $request->input('checkOutDate'),
-                'room'          => [
-                    'numberRooms'       => $request->input('numberRooms'),
-                    'numberAdults'      => $request->input('numberAdults'),
-                    'numberChildren'    => $request->input('numberChildren')
-                ],
-                'user'          => config('hotelManager.user'),
-                'pass'          => config('hotelManager.password'),
-                'token'         => config('hotelManager.token'),
-                'action'        => $request->input('action')
-            ])
-        ];
+        $response = HotelManager::checkAvailability([
+            'lang'              => $request->input('lang'),
+            'hotelIds'          => explode(',',$request->input('hotelIds')), // You must pass a array with hotel IDs
+            'checkInDate'       => $request->input('checkInDate'),
+            'checkOutDate'      => $request->input('checkOutDate'),
+            'numberRooms'       => $request->input('numberRooms'),
+            'numberAdults'      => $request->input('numberAdults'),
+            'numberChildren'    => $request->input('numberChildren')
+        ]);
 
-        $response = HotelManager::checkAvailability($params);
+        if($request->input('type') === 'json')
+        {
+
+            return response(json_encode($response), 200)
+                ->header('Content-Type', 'application/json');
+        }
+        else
+        {
+            return view('www.content.hotel_manager_view_availability', $response);
+        }
+    }
+
+    public function openTransaction(Request $request)
+    {
+        $response = HotelManager::openTransaction([
+            'roomId'        => $request->input('roomId'),
+            'checkInDate'   => $request->input('checkInDate'),
+            'checkOutDate'  => $request->input('checkOutDate'),
+            'cantidad'      => 1
+        ]);
 
         if($request->input('type') === 'json')
         {
@@ -44,7 +55,28 @@ class HotelManagerController extends Controller
         }
         else
         {
-            dd(json_decode($response));
+            return json_decode($response);
+        }
+    }
+
+    public function closeTransaction(Request $request)
+    {
+//        $response = HotelManager::closeTransaction([
+//            'lang'          => $request->input('lang'),
+//            'checkInDate'   => $request->input('checkInDate'),
+//            'checkOutDate'  => $request->input('checkOutDate'),
+//            'cantidad'      => 1
+//        ]);
+
+
+        if($request->input('type') === 'json')
+        {
+            return response($response, 200)
+                ->header('Content-Type', 'application/json');
+        }
+        else
+        {
+            return json_decode($response);
         }
 
     }

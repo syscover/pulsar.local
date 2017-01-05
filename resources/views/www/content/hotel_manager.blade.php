@@ -63,8 +63,6 @@
             <input type="number" class="form-control" id="inputNumberChildren" name="numberChildren" value="0">
         </div>
 
-        <input type="hidden" name="action" value="list_disponibilidad">
-
         <input type="hidden" name="rooms[numberRooms]" value="1">
         <input type="hidden" name="rooms[numberAdults]" value="1">
 
