@@ -10,8 +10,11 @@
                 $('[name=type]').val('json');
 
                 $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('[name="csrf-token"]').attr('content')
+                    },
                     data: $('#hotelManagerForm').serialize(),
-                    url: '{{ route('hotelManagerCheckAvailability') }}',
+                    url: '{{ route('hotelManagerCheckAvailability-' . user_lang()) }}',
                     type: 'POST',
                     dataType: "json",
                     success: function (response) {
@@ -33,7 +36,8 @@
 @section('content')
     <h1>Hotel Manager</h1>
 
-    <form id="hotelManagerForm" action="{{ route('hotelManagerCheckAvailability') }}" method="post">
+    <form id="hotelManagerForm" action="{{ route('hotelManagerCheckAvailability-' . user_lang()) }}" method="post">
+        {{ csrf_field() }}
         <div class="form-group">
             <label for="inputLang">Idioma</label>
             <input type="text" class="form-control" id="inputLang" name="lang" value="es">
@@ -62,9 +66,6 @@
             <label for="inputNumberChildren">Número de niños</label>
             <input type="number" class="form-control" id="inputNumberChildren" name="numberChildren" value="0">
         </div>
-
-        <input type="hidden" name="rooms[numberRooms]" value="1">
-        <input type="hidden" name="rooms[numberAdults]" value="1">
 
         <button type="submit" class="btn btn-default">Check Availability POST</button>
         <button type="button" id="ckjson" class="btn btn-default">Check Availability JSON</button>

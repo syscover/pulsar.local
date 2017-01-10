@@ -49,13 +49,15 @@ Route::group(['middleware' => ['pulsar.navTools']], function () {
     // HOTEL MANAGER
     // EN
     Route::get('/en/hotel/manager',                                                         ['as' => 'hotelManager-en',                     'uses' => '\App\Http\Controllers\HotelManagerController@hotelManager']);
-    Route::get('/en/hotel/manager/vew/availability',                                        ['as' => 'hotelManager-en',                     'uses' => '\App\Http\Controllers\HotelManagerController@hotelManager']);
+    Route::match(['get', 'post'], '/en/hotel/manager/vew/availability',                     ['as' => 'hotelManagerCheckAvailability-en',    'uses' => '\App\Http\Controllers\HotelManagerController@checkAvailability']);
+    Route::post('/en/hotel/manager/open/transaction',                                       ['as' => 'hotelManagerOpenTransaction-en',      'uses' => '\App\Http\Controllers\HotelManagerController@openTransaction']);
+    Route::post('/en/hotel/manager/close/transaction',                                      ['as' => 'hotelManagerCloseTransaction-en',     'uses' => '\App\Http\Controllers\HotelManagerController@closeTransaction']);
 
     // ES
     Route::get('/es/hotel/manager',                                                         ['as' => 'hotelManager-es',                     'uses' => '\App\Http\Controllers\HotelManagerController@hotelManager']);
-    Route::get('/en/hotel/manager/vew/availability',                                        ['as' => 'hotelManager-en',                     'uses' => '\App\Http\Controllers\HotelManagerController@hotelManager']);
-
-    Route::match(['get', 'post'], '/hotel/manager/check/availability',                      ['as' => 'hotelManagerCheckAvailability',       'uses' => '\App\Http\Controllers\HotelManagerController@checkAvailability']);
+    Route::match(['get', 'post'], '/es/hotel/manager/ver/disponibilidad',                   ['as' => 'hotelManagerCheckAvailability-es',    'uses' => '\App\Http\Controllers\HotelManagerController@checkAvailability']);
+    Route::post('/es/hotel/manager/abrir/transaccion',                                      ['as' => 'hotelManagerOpenTransaction-es',      'uses' => '\App\Http\Controllers\HotelManagerController@openTransaction']);
+    Route::post('/en/hotel/manager/cerrar/transaccion',                                     ['as' => 'hotelManagerCloseTransaction-es',     'uses' => '\App\Http\Controllers\HotelManagerController@closeTransaction']);
 });
 
 // Route with pulsar.taxRule, this instance taxCountry and taxCustomerClass from data customer loged,

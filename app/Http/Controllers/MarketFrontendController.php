@@ -672,6 +672,9 @@ class MarketFrontendController extends Controller
      */
     public function redsysPaymentResponse(Request $request)
     {
+        // log
+        Log::info('Enter in redsysPaymentResponse method whit parameters', $request->all());
+
         try
         {
             // package obtain from , https://github.com/ssheduardo/sermepa

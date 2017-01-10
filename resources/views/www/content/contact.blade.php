@@ -32,7 +32,8 @@
         var address = 'Calle Falsa 123';
 
         function initializeMap() {
-            if ($(window).width()>=992){
+            if ($(window).width()>=992)
+            {
                 var mapOptions = {
                     center: { lat: latitude, lng: longitude },
                     zoom: 12,
