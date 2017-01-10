@@ -93,7 +93,7 @@
             <label for="inputCvv">CVV</label>
             <input type="text" class="form-control" id="inputCvv" name="cvv" value="">
         </div>
-        
+
         <button type="submit" class="btn btn-default">RESERVAR</button>
     </form>
 @stop
