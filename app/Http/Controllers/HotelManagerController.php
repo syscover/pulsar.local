@@ -74,12 +74,12 @@ class HotelManagerController extends Controller
 
     public function closeTransaction(Request $request)
     {
-//        $response = HotelManager::closeTransaction([
-//            'lang'          => $request->input('lang'),
-//            'checkInDate'   => $request->input('checkInDate'),
-//            'checkOutDate'  => $request->input('checkOutDate'),
-//            'cantidad'      => 1
-//        ]);
+        $response = HotelManager::closeTransaction([
+            'lang'          => $request->input('lang'),
+            'checkInDate'   => $request->input('checkInDate'),
+            'checkOutDate'  => $request->input('checkOutDate'),
+            'cantidad'      => 1
+        ]);
 
 
         if($request->input('type') === 'json')

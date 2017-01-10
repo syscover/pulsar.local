@@ -43,7 +43,7 @@
             <input type="text" class="form-control" id="inputName" name="name" value="">
         </div>
         <div class="form-group">
-            <label for="inputSurname">Surname</label>
+            <label for="inputSurname">Apellidos</label>
             <input type="text" class="form-control" id="inputSurname" name="surname" value="">
         </div>
         <div class="form-group">
@@ -54,27 +54,46 @@
             <label for="inputEmail">Email</label>
             <input type="text" class="form-control" id="inputEmail" name="email" value="">
         </div>
+
         <div class="form-group">
-            <label for="inputEmail">Email</label>
-            <input type="text" class="form-control" id="inputEmail" name="email" value="">
+            <label for="inputDocType">DocType</label>
+            <input type="text" class="form-control" id="inputDocType" name="docType" value="">
+        </div>
+        <div class="form-group">
+            <label for="inputDocNumber">DocNumber</label>
+            <input type="text" class="form-control" id="inputDocNumber" name="docNumber" value="">
+        </div>
+        <div class="form-group">
+            <label for="inputObservations">Observaciones</label>
+            <input type="text" class="form-control" id="inputObservations" name="observations" value="">
         </div>
 
         <div class="form-group">
-            <label for="inputEmail">DOCTYE</label>
-            <input type="text" class="form-control" id="inputEmail" name="email" value="">
+            <label for="inputCountry">País</label>
+            <input type="text" class="form-control" id="inputCountry" name="country" value="">
         </div>
 
-
-
-
-
-
-
-
-
+        <div class="form-group">
+            <label for="inputPayment">Medio de pago</label>
+            <input type="text" class="form-control" id="inputPayment" name="payment" value="">
+        </div>
+        <div class="form-group">
+            <label for="inputCreditCardHolder">Titular Tarjeta de crédito</label>
+            <input type="text" class="form-control" id="inputCreditCardHolder" name="creditCardHolder" value="">
+        </div>
+        <div class="form-group">
+            <label for="inputCreditCard">Número Tarjeta de crédito</label>
+            <input type="text" class="form-control" id="inputCreditCard" name="creditCard" value="">
+        </div>
+        <div class="form-group">
+            <label for="inputDateExpiry">Fecha vencimiento</label>
+            <input type="text" class="form-control" id="inputDateExpiry" name="dateExpiry" value="">
+        </div>
+        <div class="form-group">
+            <label for="inputCvv">CVV</label>
+            <input type="text" class="form-control" id="inputCvv" name="cvv" value="">
+        </div>
+        
         <button type="submit" class="btn btn-default">RESERVAR</button>
-
-        <input type="hidden" name="type" value="">
-
     </form>
 @stop
