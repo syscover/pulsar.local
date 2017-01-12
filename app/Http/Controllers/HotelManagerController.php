@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Syscover\HotelManager\Facades\HotelManager;
+use Syscover\Pulsar\Models\Country;
 
 /**
  * Class HotelManagerController
@@ -61,6 +62,19 @@ class HotelManagerController extends Controller
         $response['numberAdults']   = $request->input('numberAdults');
         $response['numberChildren'] = $request->input('numberChildren');
 
+        $response['countries']      = Country::builder()->where('lang_id_002', user_lang())->get();
+
+        $response['docTypes']       = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        }, config('hotelManager.docTypes'));
+
+        $response['paymentMethods']       = array_map(function($object){
+            $object->name = trans($object->name);
+            return $object;
+        }, config('hotelManager.paymentMethods'));
+
+
         if($request->input('type') === 'json')
         {
             return response($response, 200)
@@ -75,10 +89,28 @@ class HotelManagerController extends Controller
     public function closeTransaction(Request $request)
     {
         $response = HotelManager::closeTransaction([
-            'lang'          => $request->input('lang'),
-            'checkInDate'   => $request->input('checkInDate'),
-            'checkOutDate'  => $request->input('checkOutDate'),
-            'cantidad'      => 1
+            'lang'                      => $request->input('lang'),
+            'checkInDate'               => $request->input('checkInDate'),
+            'checkOutDate'              => $request->input('checkOutDate'),
+            'checkInHour'               => $request->input('checkInHour'),
+            'checkInMinute'             => $request->input('checkInMinute'),
+            'numberRooms'               => $request->input('numberRooms'),
+            'numberAdults'              => $request->input('numberAdults'),
+            'numberChildren'            => $request->input('numberChildren'),
+            'observations'              => $request->input('observations'),
+            'name'                      => $request->input('name'),
+            'surname'                   => $request->input('surname'),
+            'phone'                     => $request->input('phone'),
+            'email'                     => $request->input('email'),
+            'country'                   => $request->input('country'),
+            'docType'                   => $request->input('docType'),
+            'docNumber'                 => $request->input('docNumber'),
+            'paymentMethod'             => $request->input('paymentMethod'),
+            'creditCardHolder'          => $request->input('creditCardHolder'),
+            'creditCardNumber'          => $request->input('creditCardNumber'),
+            'creditCardDateExpiry'      => $request->input('creditCardDateExpiry'),
+            'cvv'                       => $request->input('cvv'),
+            'transactionId'             => $request->input('transactionId'),
         ]);
 
 

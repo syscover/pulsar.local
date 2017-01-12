@@ -19,6 +19,9 @@ class HotelManagerServiceProvider extends ServiceProvider
         if (!$this->app->routesAreCached())
             require $this->app->basePath() . '/workbench/syscover/laravel-hotel-manager/src/routes.php';
 
+        // register translations
+        $this->loadTranslationsFrom($this->app->basePath() . '/workbench/syscover/laravel-hotel-manager/src/lang', 'hotelManager');
+
         // register config files
         $this->publishes([
             $this->app->basePath() . '/workbench/syscover/laravel-hotel-manager/src/config/hotelManager.php' => config_path('hotelManager.php'),

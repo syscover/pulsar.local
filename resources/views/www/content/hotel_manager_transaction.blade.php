@@ -10,7 +10,7 @@
 
     <form id="hotelManagerForm" action="{{ route('hotelManagerCloseTransaction-' . user_lang()) }}" method="post">
         {{ csrf_field() }}
-        <input type="hidden" name="transaction" value="{{ $transaction->id }}">
+        <input type="hidden" name="transactionId" value="{{ $transaction->id }}">
         <div class="form-group">
             <label for="inputLang">Idioma *</label>
             <input type="text" class="form-control" id="inputLang" name="lang" value="es">
@@ -66,10 +66,9 @@
         <div class="form-group">
             <label for="inputDocType">DocType *</label>
             <select class="form-control" id="inputDocType" name="docType">
-                <option value="1">DNI</option>
-                <option value="2">NIE</option>
-                <option value="3">Pasaporte</option>
-                <option value="4">CIF</option>
+                @foreach($docTypes as $docType)
+                    <option value="{{ $docType->id }}">{{ $docType->name }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">
@@ -84,16 +83,18 @@
         <div class="form-group">
             <label for="inputCountry">País</label>
             <select class="form-control" id="inputCountry" name="country">
+                @foreach($countries as $country)
+                    <option value="{{ $country->id_002 }}">{{ $country->name_002 }}</option>
+                @endforeach
             </select>
         </div>
 
         <div class="form-group">
             <label for="inputPayment">Medio de pago *</label>
-            <select class="form-control" id="inputPayment" name="payment">
-                <option value="1">Visa</option>
-                <option value="2">American Express</option>
-                <option value="3">Master Card</option>
-                <option value="4">Depósito Bancario</option>
+            <select class="form-control" id="inputPayment" name="paymentMethod">
+                @foreach($paymentMethods as $paymentMethod)
+                    <option value="{{ $paymentMethod->id }}">{{ $paymentMethod->name }}</option>
+                @endforeach
             </select>
         </div>
         <div class="form-group">
@@ -101,12 +102,12 @@
             <input type="text" class="form-control" id="inputCreditCardHolder" name="creditCardHolder" value="">
         </div>
         <div class="form-group">
-            <label for="inputCreditCard">Número Tarjeta de crédito *</label>
-            <input type="text" class="form-control" id="inputCreditCard" name="creditCard" value="">
+            <label for="inputCreditCardNumber">Número Tarjeta de crédito *</label>
+            <input type="text" class="form-control" id="inputCreditCardNumber" name="creditCardNumber" value="">
         </div>
         <div class="form-group">
-            <label for="inputDateExpiry">Fecha vencimiento *</label>
-            <input type="text" class="form-control" id="inputDateExpiry" name="dateExpiry" value="" placeholder="YYMM">
+            <label for="inputCreditCardDateExpiry">Fecha vencimiento *</label>
+            <input type="text" class="form-control" id="inputCreditCardDateExpiry" name="creditCardDateExpiry" value="" placeholder="YYMM">
         </div>
         <div class="form-group">
             <label for="inputCvv">CVV</label>
