@@ -25,11 +25,11 @@
         </div>
         <div class="form-group">
             <label for="inputCheckInHour">Hora llegada</label>
-            <input type="text" class="form-control" id="inputCheckInHour" name="checkInHour" value="">
+            <input type="text" class="form-control" id="inputCheckInHour" name="checkInHour" value="12">
         </div>
         <div class="form-group">
             <label for="inputCheckInMinute">Minuto llegada</label>
-            <input type="text" class="form-control" id="inputCheckInMinute" name="checkInMinute" value="">
+            <input type="text" class="form-control" id="inputCheckInMinute" name="checkInMinute" value="00">
         </div>
         <div class="form-group">
             <label for="inputNumberRooms">Número de habitaciones *</label>
@@ -48,19 +48,19 @@
 
         <div class="form-group">
             <label for="inputName">Nombre *</label>
-            <input type="text" class="form-control" id="inputName" name="name" value="">
+            <input type="text" class="form-control" id="inputName" name="name" value="Carlos">
         </div>
         <div class="form-group">
             <label for="inputSurname">Apellidos *</label>
-            <input type="text" class="form-control" id="inputSurname" name="surname" value="">
+            <input type="text" class="form-control" id="inputSurname" name="surname" value="Palacin">
         </div>
         <div class="form-group">
             <label for="inputPhone">Teléfono *</label>
-            <input type="text" class="form-control" id="inputPhone" name="phone" value="">
+            <input type="text" class="form-control" id="inputPhone" name="phone" value="+349155555555">
         </div>
         <div class="form-group">
             <label for="inputEmail">Email *</label>
-            <input type="text" class="form-control" id="inputEmail" name="email" value="">
+            <input type="text" class="form-control" id="inputEmail" name="email" value="cpalacin@syscover.com">
         </div>
 
         <div class="form-group">
@@ -73,11 +73,13 @@
         </div>
         <div class="form-group">
             <label for="inputDocNumber">DocNumber *</label>
-            <input type="text" class="form-control" id="inputDocNumber" name="docNumber" value="">
+            <input type="text" class="form-control" id="inputDocNumber" name="docNumber" value="66666666S">
         </div>
         <div class="form-group">
             <label for="inputObservations">Observaciones</label>
-            <textarea class="form-control" id="inputObservations" name="observations"></textarea>
+            <textarea class="form-control" id="inputObservations" name="observations">
+                Hola mundo
+            </textarea>
         </div>
 
         <div class="form-group">
@@ -99,19 +101,19 @@
         </div>
         <div class="form-group">
             <label for="inputCreditCardHolder">Titular Tarjeta de crédito *</label>
-            <input type="text" class="form-control" id="inputCreditCardHolder" name="creditCardHolder" value="">
+            <input type="text" class="form-control" id="inputCreditCardHolder" name="creditCardHolder" value="Carlos">
         </div>
         <div class="form-group">
             <label for="inputCreditCardNumber">Número Tarjeta de crédito *</label>
-            <input type="text" class="form-control" id="inputCreditCardNumber" name="creditCardNumber" value="">
+            <input type="text" class="form-control" id="inputCreditCardNumber" name="creditCardNumber" value="1111111111111111">
         </div>
         <div class="form-group">
             <label for="inputCreditCardDateExpiry">Fecha vencimiento *</label>
-            <input type="text" class="form-control" id="inputCreditCardDateExpiry" name="creditCardDateExpiry" value="" placeholder="YYMM">
+            <input type="text" class="form-control" id="inputCreditCardDateExpiry" name="creditCardDateExpiry" value="1712" placeholder="YYMM">
         </div>
         <div class="form-group">
             <label for="inputCvv">CVV</label>
-            <input type="text" class="form-control" id="inputCvv" name="cvv" value="">
+            <input type="text" class="form-control" id="inputCvv" name="cvv" value="123">
         </div>
 
         <button type="submit" class="btn btn-default">RESERVAR</button>

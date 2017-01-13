@@ -121,7 +121,7 @@ class HotelManagerController extends Controller
         }
         else
         {
-            return json_decode($response);
+            return view('www.content.hotel_manager_close_transaction', $response);
         }
 
     }
