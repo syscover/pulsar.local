@@ -181,7 +181,6 @@ return [
         /*
          * Thirdparty Application Service Providers...
          */
-        Maatwebsite\Excel\ExcelServiceProvider::class,
 
         /*
          * Pulsar Application Service Providers...
