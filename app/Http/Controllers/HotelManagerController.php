@@ -55,6 +55,7 @@ class HotelManagerController extends Controller
             'numberRooms'   => $request->input('numberRooms')
         ]);
 
+
         // add parameters for view
         $response['checkInDate']        = $request->input('checkInDate');
         $response['checkOutDate']       = $request->input('checkOutDate');
@@ -64,17 +65,28 @@ class HotelManagerController extends Controller
         $response['isRefundableRate']   = $request->input('isRefundableRate');
         $response['additionId']         = $request->input('additionId');
 
-        $response['countries']      = Country::builder()->where('lang_id_002', user_lang())->get();
+        $response['countries']          = Country::builder()->where('lang_id_002', user_lang())->get();
 
-        $response['docTypes']       = array_map(function($object){
+        $response['docTypes']           = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         }, config('hotelManager.docTypes'));
 
-        $response['paymentMethods']       = array_map(function($object){
+        $response['paymentMethods']     = array_map(function($object){
             $object->name = trans($object->name);
             return $object;
         }, config('hotelManager.paymentMethods'));
+
+
+        // get conditions
+        $conditions = HotelManager::getConditions([
+            'lang'              => 'es', // or use user_lang()
+            'hotelId'           => $request->input('hotelId'),
+            'isRefundableRate'  => $request->input('isRefundableRate')
+        ]);
+
+        dd($conditions);
+
 
 
         if($request->input('type') === 'json')

@@ -13,6 +13,7 @@
         <input type="hidden" name="transactionId" value="{{ $transaction->id }}">
         <input type="hidden" name="additionId" value="{{ $additionId }}">
         <input type="hidden" name="isRefundableRate" value="{{ $isRefundableRate }}">
+        <input type="hidden" name="hotelId" value="{{ $hotelId }}">
 
         <div class="form-group">
             <label for="inputLang">Idioma *</label>

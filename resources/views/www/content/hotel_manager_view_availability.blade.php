@@ -33,6 +33,7 @@
             </select>
             <button type="submit">Reservar reembolsable</button>
             {{ csrf_field() }}
+            <input type="hidden" name="hotelId" value="{{ $hotel->id }}">
             <input type="hidden" name="roomId" value="{{ $room->id }}">
             <input type="hidden" name="checkInDate" value="{{ $checkInDate }}">
             <input type="hidden" name="checkOutDate" value="{{ $checkOutDate }}">
@@ -57,6 +58,7 @@
                 </select>
                 <button type="submit">Reservar no reembolsable</button>
                 {{ csrf_field() }}
+                <input type="hidden" name="hotelId" value="{{ $hotel->id }}">
                 <input type="hidden" name="roomId" value="{{ $room->id }}">
                 <input type="hidden" name="checkInDate" value="{{ $checkInDate }}">
                 <input type="hidden" name="checkOutDate" value="{{ $checkOutDate }}">
