@@ -53,7 +53,7 @@
             <form action="{{ route('hotelManagerOpenTransaction-' . user_lang()) }}" method="post">
                 <select name="additionId">
                     @foreach($room->additions as $addition)
-                        <option value="{{ $addition->id }}">{{ $addition->name }}</option>
+                        <option value="{{ $addition->id }}">{{ $addition->name }} Adulto: +{{ $addition->adultRate }} Niño: +{{ $addition->childrenRate }}</option>
                     @endforeach
                 </select>
                 <button type="submit">Reservar no reembolsable</button>

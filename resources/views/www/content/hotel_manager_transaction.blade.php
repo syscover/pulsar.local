@@ -13,7 +13,6 @@
         <input type="hidden" name="transactionId" value="{{ $transaction->id }}">
         <input type="hidden" name="additionId" value="{{ $additionId }}">
         <input type="hidden" name="isRefundableRate" value="{{ $isRefundableRate }}">
-        <input type="hidden" name="hotelId" value="{{ $hotelId }}">
 
         <div class="form-group">
             <label for="inputLang">Idioma *</label>
@@ -119,6 +118,16 @@
             <label for="inputCvv">CVV</label>
             <input type="text" class="form-control" id="inputCvv" name="cvv" value="123">
         </div>
+
+        <h2>Condiciones</h2>
+        @foreach($conditions as $condition)
+            <li>
+                {{ $condition->name }}<br>
+                {!! $condition->description !!}
+            </li>
+        @endforeach
+
+        <br><br>
 
         <button type="submit" class="btn btn-default">RESERVAR</button>
     </form>

@@ -85,9 +85,8 @@ class HotelManagerController extends Controller
             'isRefundableRate'  => $request->input('isRefundableRate')
         ]);
 
-        dd($conditions);
-
-
+        if(count($conditions) > 0)
+            $response = array_merge($response, $conditions);
 
         if($request->input('type') === 'json')
         {
