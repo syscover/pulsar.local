@@ -44,15 +44,15 @@
         </div>
         <div class="form-group">
             <label for="inputHotelsId">Hotels ID (IDs separados por comas)</label>
-            <input type="text" class="form-control" id="inputHotelsId" name="hotelIds" value="370,201,379,377">
+            <input type="text" class="form-control" id="inputHotelsId" name="hotelIds" value="370,201,379,377,388">
         </div>
         <div class="form-group">
             <label for="inputCheckInDate">CheckIn Date</label>
-            <input type="text" class="form-control" id="inputCheckInDate" name="checkInDate" value="2017-01-15">
+            <input type="text" class="form-control" id="inputCheckInDate" name="checkInDate" value="2018-01-12">
         </div>
         <div class="form-group">
             <label for="inputCheckOutDate">CheckOut Date</label>
-            <input type="text" class="form-control" id="inputCheckOutDate" name="checkOutDate" value="2017-01-20">
+            <input type="text" class="form-control" id="inputCheckOutDate" name="checkOutDate" value="2018-01-14">
         </div>
         <div class="form-group">
             <label for="inputNumberRooms">Número de habitaciones</label>

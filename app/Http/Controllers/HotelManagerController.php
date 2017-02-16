@@ -56,11 +56,13 @@ class HotelManagerController extends Controller
         ]);
 
         // add parameters for view
-        $response['checkInDate']    = $request->input('checkInDate');
-        $response['checkOutDate']   = $request->input('checkOutDate');
-        $response['numberRooms']    = $request->input('numberRooms');
-        $response['numberAdults']   = $request->input('numberAdults');
-        $response['numberChildren'] = $request->input('numberChildren');
+        $response['checkInDate']        = $request->input('checkInDate');
+        $response['checkOutDate']       = $request->input('checkOutDate');
+        $response['numberRooms']        = $request->input('numberRooms');
+        $response['numberAdults']       = $request->input('numberAdults');
+        $response['numberChildren']     = $request->input('numberChildren');
+        $response['isRefundableRate']   = $request->input('isRefundableRate');
+        $response['additionId']         = $request->input('additionId');
 
         $response['countries']      = Country::builder()->where('lang_id_002', user_lang())->get();
 
@@ -110,7 +112,10 @@ class HotelManagerController extends Controller
             'creditCardNumber'          => $request->input('creditCardNumber'),
             'creditCardDateExpiry'      => $request->input('creditCardDateExpiry'),
             'cvv'                       => $request->input('cvv'),
+            'isRefundableRate'          => $request->input('isRefundableRate'),
+            'additionId'                => $request->input('additionId'),
             'transactionId'             => $request->input('transactionId'),
+
         ]);
 
 

@@ -17,8 +17,6 @@
         "sofa/eloquence": "5.3.*",
         "maatwebsite/excel": "~2.1.0",
         "tecnickcom/tcpdf": "^6.2",
-        "syscover/pulsar": "~2.0",
-        "syscover/nav-tools": "~2.0",
         "doctrine/dbal": "*"
     },
     "autoload": {

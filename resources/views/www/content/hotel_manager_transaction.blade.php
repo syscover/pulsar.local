@@ -11,6 +11,9 @@
     <form id="hotelManagerForm" action="{{ route('hotelManagerCloseTransaction-' . user_lang()) }}" method="post">
         {{ csrf_field() }}
         <input type="hidden" name="transactionId" value="{{ $transaction->id }}">
+        <input type="hidden" name="additionId" value="{{ $additionId }}">
+        <input type="hidden" name="isRefundableRate" value="{{ $isRefundableRate }}">
+
         <div class="form-group">
             <label for="inputLang">Idioma *</label>
             <input type="text" class="form-control" id="inputLang" name="lang" value="es">

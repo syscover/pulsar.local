@@ -12,11 +12,11 @@ class NavToolsServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		// load autoload from package composer.json
-		require $this->app->basePath() . '/workbench/syscover/nav-tools/vendor/autoload.php';
+		require $this->app->basePath() . '/workbench/syscover/laravel-nav-tools/vendor/autoload.php';
 
 		// register config files
 		$this->publishes([
-			$this->app->basePath() . '/workbench/syscover/nav-tools/src/config/navTools.php' => config_path('navTools.php')
+			$this->app->basePath() . '/workbench/syscover/laravel-nav-tools/src/config/navTools.php' => config_path('navTools.php')
 		]);
     }
 

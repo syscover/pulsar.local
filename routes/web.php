@@ -7,6 +7,9 @@ Route::group(['middleware' => ['pulsar.navTools']], function () {
     Route::get('/en',                                                                       ['as' => 'home-en',                             'uses' => '\App\Http\Controllers\WebFrontendController@home']);
 
 
+    Route::get('/{lang}-{country}/url/test',                                                      function () {});
+
+
     // CUSTOMER ACCOUNT
     // EN
     Route::get('/en/account/login',                                                         ['as' => 'getLogin-en',                         'uses' => '\App\Http\Controllers\CustomerFrontendController@getLogin']);

@@ -8,7 +8,7 @@
 @section('content')
     <h1>Hotel Manager</h1>
     @foreach($hotels as $hotel)
-        Hotel: {{ $hotel->id }}
+        <h1>Hotel: {{ $hotel->id }}</h1>
         <br><br>
 
         Habitaciones disponibles:<br>
@@ -19,17 +19,19 @@
             <li>Quantity: {{ $room->quantity }}</li>
         </ul>
 
-        Tarifas:<br>
+        Tarifas:<br><br>
+        <strong>Tarifa reembolsable</strong>
         <ul>
             <li>Total: {{ $room->rates->rate }}</li>
             <li>Por día: {{ $room->rates->rateAvg }}</li>
-            <li>Tarifa no reembolsable: {{ $room->rates->isNotRefundableRate? 'SI' : 'NO' }}</li>
-            @if( $room->rates->isNotRefundableRate)
-                <li>Descuento por tarifa no reembolsable: {{ $room->rates->notRefundablePercentage }}</li>
-            @endif
         </ul>
         <form action="{{ route('hotelManagerOpenTransaction-' . user_lang()) }}" method="post">
-            <button type="submit">Reservar</button>
+            <select name="additionId">
+                @foreach($room->additions as $addition)
+                    <option value="{{ $addition->id }}">{{ $addition->name }}</option>
+                @endforeach
+            </select>
+            <button type="submit">Reservar reembolsable</button>
             {{ csrf_field() }}
             <input type="hidden" name="roomId" value="{{ $room->id }}">
             <input type="hidden" name="checkInDate" value="{{ $checkInDate }}">
@@ -37,7 +39,34 @@
             <input type="hidden" name="numberRooms" value="{{ $numberRooms }}">
             <input type="hidden" name="numberAdults" value="{{ $numberAdults }}">
             <input type="hidden" name="numberChildren" value="{{ $numberChildren }}">
+            <input type="hidden" name="isRefundableRate" value="1">
         </form>
+        <br><br>
+        @if( $room->rates->hasNonRefundableRate)
+            <strong>Tarifa no reembolsable</strong>
+            <ul>
+                <li>Total no reembolsable: {{ $room->rates->rateNonRefundable }}</li>
+                <li>Por día no reembolsable: {{ $room->rates->rateAvgNonRefundable }}</li>
+                <li>Descuento por tarifa no reembolsable: {{ $room->rates->nonRefundablePercentageDiscount }}</li>
+            </ul>
+            <form action="{{ route('hotelManagerOpenTransaction-' . user_lang()) }}" method="post">
+                <select name="additionId">
+                    @foreach($room->additions as $addition)
+                        <option value="{{ $addition->id }}">{{ $addition->name }}</option>
+                    @endforeach
+                </select>
+                <button type="submit">Reservar no reembolsable</button>
+                {{ csrf_field() }}
+                <input type="hidden" name="roomId" value="{{ $room->id }}">
+                <input type="hidden" name="checkInDate" value="{{ $checkInDate }}">
+                <input type="hidden" name="checkOutDate" value="{{ $checkOutDate }}">
+                <input type="hidden" name="numberRooms" value="{{ $numberRooms }}">
+                <input type="hidden" name="numberAdults" value="{{ $numberAdults }}">
+                <input type="hidden" name="numberChildren" value="{{ $numberChildren }}">
+                <input type="hidden" name="isRefundableRate" value="0">
+            </form>
+        @endif
+
         <br><br>
         @endforeach
     @endforeach
