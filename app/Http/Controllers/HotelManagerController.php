@@ -55,7 +55,6 @@ class HotelManagerController extends Controller
             'numberRooms'   => $request->input('numberRooms')
         ]);
 
-
         // add parameters for view
         $response['checkInDate']        = $request->input('checkInDate');
         $response['checkOutDate']       = $request->input('checkOutDate');
