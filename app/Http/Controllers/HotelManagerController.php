@@ -138,6 +138,5 @@ class HotelManagerController extends Controller
         {
             return view('www.content.hotel_manager_close_transaction', $response);
         }
-
     }
 }
