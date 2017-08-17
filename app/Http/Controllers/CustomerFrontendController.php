@@ -221,7 +221,7 @@ class CustomerFrontendController extends Controller
         else
         {
             return redirect()
-                ->route($this->loginPath . user_lang())
+                ->route($this->loginPath . '-' . user_lang())
                 ->withErrors([
                     'message' => 'User or password incorrect'
                 ])
