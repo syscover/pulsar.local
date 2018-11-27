@@ -157,7 +157,7 @@ class MarketFrontendController extends Controller
         $parameters = $request->route()->parameters();
 
         // get customer from session
-        $response['customer'] = auth('crm')->user();
+        $response['customer'] = auth()->guard('crm')->user();
 
         // get Order
         $response['order'] = Order::builder()
@@ -192,7 +192,7 @@ class MarketFrontendController extends Controller
         if(CartProvider::instance()->hasItemTransportable() === true)
         {
             $response['cartItems']  = CartProvider::instance()->getCartItems();
-            $response['customer']   = auth('crm')->user();
+            $response['customer']   = auth()->guard('crm')->user();
 
             // todo, this amount has to be calculate with shipping rules
             $shippungPricePerUnit = 5.00;
@@ -216,7 +216,7 @@ class MarketFrontendController extends Controller
     public function postCheckout01(Request $request)
     {
         $response['cartItems']  = CartProvider::instance()->getCartItems();
-        $response['customer']   = auth('crm')->user();
+        $response['customer']   = auth()->guard('crm')->user();
 
         // store shipping data on shopping cart
         CartProvider::instance()->setShippingData([
@@ -242,7 +242,7 @@ class MarketFrontendController extends Controller
     public function getCheckout02()
     {
         $response['cartItems']          = CartProvider::instance()->getCartItems();
-        $response['customer']           = auth('crm')->user();
+        $response['customer']           = auth()->guard('crm')->user();
         $response['shippingData']       = CartProvider::instance()->getShippingData();
 
         $response['shippingCountry']    = Country::builder()
@@ -292,7 +292,7 @@ class MarketFrontendController extends Controller
     public function getCheckout03()
     {
         $response['cartItems']          = CartProvider::instance()->getCartItems();
-        $response['customer']           = auth('crm')->user();
+        $response['customer']           = auth()->guard('crm')->user();
         $response['shippingData']       = CartProvider::instance()->getShippingData();
         $response['invoice']            = CartProvider::instance()->getInvoice();
 
@@ -360,7 +360,7 @@ class MarketFrontendController extends Controller
         }
 
         // check if there is a customer loged
-        if(auth('crm')->guest())
+        if(auth()->guard('crm')->guest())
         {
             // we can select to create a customer if not exist
             if($request->input('newCustomer') == 'create')
@@ -380,7 +380,7 @@ class MarketFrontendController extends Controller
         else
         {
             // get customer from session
-            $customer = auth('crm')->user();
+            $customer = auth()->guard('crm')->user();
         }
 
 

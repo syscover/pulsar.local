@@ -76,7 +76,7 @@ class CustomerFrontendController extends Controller
     public function account(Request $request)
     {
         $response['groups']     = Group::builder()->get();
-        $response['customer']   = auth('crm')->user();
+        $response['customer']   = auth()->guard('crm')->user();
 
         return view('www.content.account', $response);
     }
@@ -110,12 +110,12 @@ class CustomerFrontendController extends Controller
             'password'  => $request->input('password')
         ];
 
-        if(auth('crm')->attempt($credentials, $request->has('remember')))
+        if(auth()->guard('crm')->attempt($credentials, $request->has('remember')))
         {
             // check if customer is active
-            if(! auth('crm')->user()->active_301)
+            if(! auth()->guard('crm')->user()->active_301)
             {
-                auth('crm')->logout();
+                auth()->guard('crm')->logout();
 
                 // error user inactive
                 if($request->input('responseType') == 'json')
@@ -141,10 +141,10 @@ class CustomerFrontendController extends Controller
             $marketPackage = Package::builder()->find(12);
             if($marketPackage != null && $marketPackage->active_012 == true)
             {
-                $groupCustomerClassTax = GroupCustomerClassTax::builder()->where('group_id_102', auth('crm')->user()->group_id_301)->first();
+                $groupCustomerClassTax = GroupCustomerClassTax::builder()->where('group_id_102', auth()->guard('crm')->user()->group_id_301)->first();
 
                 if($groupCustomerClassTax != null)
-                    auth('crm')->user()->classTax = $groupCustomerClassTax->id_100;
+                    auth()->guard('crm')->user()->classTax = $groupCustomerClassTax->id_100;
             }
 
             // authentication OK!
@@ -156,8 +156,8 @@ class CustomerFrontendController extends Controller
                     ->get();
 
                 $taxRules = TaxRule::builder()
-                    ->where('country_id_103', empty(auth('crm')->user()->country_id_301)? config('market.taxCountry') : auth('crm')->user()->country_id_301)
-                    ->where('customer_class_tax_id_106', empty(auth('crm')->user()->classTax)? config('market.taxCustomerClass') : auth('crm')->user()->classTax)
+                    ->where('country_id_103', empty(auth()->guard('crm')->user()->country_id_301)? config('market.taxCountry') : auth()->guard('crm')->user()->country_id_301)
+                    ->where('customer_class_tax_id_106', empty(auth()->guard('crm')->user()->classTax)? config('market.taxCustomerClass') : auth()->guard('crm')->user()->classTax)
                     ->whereIn('product_class_tax_id_107', $cartProducts->pluck('product_class_tax_id_111')->toArray())
                     ->orderBy('priority_104', 'asc')
                     ->get();
@@ -199,7 +199,7 @@ class CustomerFrontendController extends Controller
             {
                 return response()->json([
                     'status'    => 'success',
-                    'customer'  => auth('crm')->user()
+                    'customer'  => auth()->guard('crm')->user()
                 ]);
             }
             else
@@ -236,7 +236,7 @@ class CustomerFrontendController extends Controller
      */
     public function logout()
     {
-        auth('crm')->logout();
+        auth()->guard('crm')->logout();
 
         // reload Shopping cart with default tax rules
         if(CartProvider::instance()->getCartItems()->count() > 0)
@@ -376,7 +376,7 @@ class CustomerFrontendController extends Controller
         {
             return response()->json([
                 'status'    => 'success',
-                'customer'  => auth('crm')->user()
+                'customer'  => auth()->guard('crm')->user()
             ]);
         }
         else
@@ -394,7 +394,7 @@ class CustomerFrontendController extends Controller
             'password'  => 'required|between:4,15|same:repassword',
         ];
 
-        if($request->input('email') == auth('crm')->user()->email_301)
+        if($request->input('email') == auth()->guard('crm')->user()->email_301)
             $rules['email'] = 'required|max:255|email';
 
         if(! $request->has('password'))
@@ -465,7 +465,7 @@ class CustomerFrontendController extends Controller
         {
             return response()->json([
                 'status'    => 'success',
-                'customer'  => auth('crm')->user()
+                'customer'  => auth()->guard('crm')->user()
             ]);
         }
         else

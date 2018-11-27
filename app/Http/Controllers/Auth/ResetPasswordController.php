@@ -147,6 +147,6 @@ class ResetPasswordController extends Controller
      */
     protected function guard()
     {
-        return auth('crm');
+        return auth()->guard('crm');
     }
 }

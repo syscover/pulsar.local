@@ -69,12 +69,12 @@
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ trans('www.my_account') }}</a>
                         <ul class="dropdown-menu">
-                            @if(auth('crm')->check())
+                            @if(auth()->guard('crm')->check())
                                 <li><a href="{{ route('account-' . user_lang()) }}">{{ trans('www.my_account') }}</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ route('logout-' . user_lang()) }}">{{ trans('www.logout') }}</a></li>
                             @endif
-                            @if(auth('crm')->guest())
+                            @if(auth()->guard('crm')->guest())
                                 <li><a href="{{ route('getLogin-' . user_lang()) }}">{{ trans('www.login') }}</a></li>
                             @endif
                         </ul>
