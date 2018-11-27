@@ -16,7 +16,7 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (auth($guard)->guest())
+        if (auth()->guard($guard)->guest())
         {
             if ($request->ajax())
             {
